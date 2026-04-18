@@ -1,0 +1,28 @@
+name: Sholat Reminder Penang
+
+on:
+  schedule:
+    # Berjalan setiap 1 menit
+    - cron: '* * * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install requests pytz
+
+      - name: Run bot
+        env:
+            TELE_USERNAME: ${{ secrets.TELE_USERNAME }}
+        run: python bot.py
