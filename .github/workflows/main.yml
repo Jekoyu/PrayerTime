@@ -3,7 +3,7 @@ name: Sholat Reminder Penang
 on:
   schedule:
     # Berjalan setiap 1 menit
-    - cron: '* * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
